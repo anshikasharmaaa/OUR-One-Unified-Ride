@@ -1,0 +1,198 @@
+.page {
+  display: block;
+  padding-bottom: calc(var(--sp-5, 24px) * 2);
+}
+.wrap {
+  width: min(1100px, 100% - 2 * var(--sp-4, 16px));
+  margin-inline: auto;
+}
+.status {
+  text-align: center;
+  color: var(--c-text-muted);
+  padding: calc(var(--sp-5, 24px) * 3) 0;
+}
+.errorBox {
+  padding-top: calc(var(--sp-5, 24px) * 3);
+  display: grid;
+  gap: var(--sp-3, 12px);
+}
+
+/* Navy band (flat, no glow). If your header is position: fixed, set --header-h on :root so this clears it. */
+.hero {
+  padding: calc(var(--header-h, 0px) + clamp(28px, 5vw, 48px)) 0
+    calc(clamp(44px, 7vw, 64px) + var(--sp-4, 16px));
+  color: #fff;
+  background: linear-gradient(
+    160deg,
+    var(--c-navy-900, #0b1b46) 0%,
+    #0a2a6c 100%
+  );
+}
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-cyan, #5fd6de);
+}
+.title {
+  margin: 0 0 var(--sp-4, 16px);
+  font-size: var(--fs-xl, 1.75rem);
+  line-height: 1.15;
+  color: #fff;
+}
+
+.summary {
+  display: grid;
+  gap: var(--sp-4, 16px);
+  padding: var(--sp-4, 16px);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.stops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.stop {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  padding-bottom: 18px;
+}
+.stop:last-child {
+  padding-bottom: 0;
+}
+.stop:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 32px;
+  bottom: 4px;
+  border-left: 2px dashed rgba(255, 255, 255, 0.4);
+}
+.dot {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+.dotA {
+  background: #16a34a;
+}
+.dotB {
+  background: #dc2626;
+}
+.addr {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.addr strong {
+  font-size: var(--fs-sm);
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+.tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-cyan, #5fd6de);
+}
+.sub {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.68);
+  overflow-wrap: anywhere;
+}
+
+.side {
+  display: grid;
+  gap: var(--sp-3, 12px);
+  padding-top: var(--sp-3, 12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-3, 12px);
+  margin: 0;
+}
+.metrics dt {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+.metrics dd {
+  margin: 2px 0 0;
+  font-size: var(--fs-md, 1.1rem);
+  font-weight: 800;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+.edit {
+  min-height: 44px;
+  padding: 0 var(--sp-5, 24px);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.edit:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.edit:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+}
+
+/* Map card pulled up so it overlaps the band */
+.body {
+  display: grid;
+  gap: var(--sp-3, 12px);
+}
+.mapSlot {
+  position: relative;
+  z-index: 2;
+  margin-top: calc(-1 * clamp(44px, 7vw, 64px));
+}
+.fine {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+
+@media (min-width: 720px) {
+  .summary {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--sp-5, 24px);
+    padding: var(--sp-5, 24px);
+  }
+  .side {
+    grid-auto-flow: column;
+    align-items: center;
+    gap: var(--sp-5, 24px);
+    padding: 0 0 0 var(--sp-5, 24px);
+    border-top: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .metrics {
+    grid-template-columns: repeat(3, auto);
+  }
+}

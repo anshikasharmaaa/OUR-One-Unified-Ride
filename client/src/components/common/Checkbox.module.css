@@ -1,0 +1,17 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  cursor: pointer;
+}
+.box {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--c-brand-600);
+  flex: none;
+  cursor: pointer;
+}

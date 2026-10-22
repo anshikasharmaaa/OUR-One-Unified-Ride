@@ -1,0 +1,24 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms);
+  will-change: opacity, transform;
+}
+.zoom {
+  transform: translateY(20px) scale(0.96);
+}
+.in {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .zoom {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,48 @@
+:root {
+  /* Colour — sampled from the reference: soft lavender-blue canvas, one confident blue, navy text */
+  --c-bg: #eaf0ff;
+  --c-bg-deep: #dbe5ff;
+  --c-surface: #ffffff;
+  --c-brand-50: #eef3ff;
+  --c-brand-500: #3b74f5;
+  --c-brand-600: #2563eb;
+  --c-brand-700: #1d4ed8;
+  --c-navy-900: #0f1b3d;
+  --c-text: #0f1b3d;
+  --c-text-muted: #55648c;
+  --c-border: #d5def3;
+  --c-border-strong: #aebbdd;
+  --c-error: #c62839;
+  --c-error-bg: #fdecee;
+  --c-success: #137a4b;
+  --c-success-bg: #e6f6ee;
+  --c-info-bg: #eaf1ff;
+  --c-focus: #1d4ed8;
+  --c-sky: #cfe0ff;
+  --c-cyan: #5fd6de;
+  --c-amber: #f5b83d;
+  --c-navy-800: #17254f;
+
+  /* Type */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.625rem;
+  --fs-2xl: 2.25rem;
+  --lh-tight: 1.2;
+  --lh-body: 1.5;
+
+  /* Space & shape */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 48px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --control-h: 48px; /* touch-friendly */
+  --shadow-card: 0 18px 50px -18px rgba(29, 78, 216, 0.28), 0 2px 6px rgba(15, 27, 61, 0.05);
+  --shadow-chip: 0 8px 24px -10px rgba(29, 78, 216, 0.35);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --header-h: 84px;
+  --container: 1180px;
+}

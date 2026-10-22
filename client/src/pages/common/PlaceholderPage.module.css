@@ -1,0 +1,7 @@
+.panel { max-width: 640px; padding: var(--sp-6); background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+.h1 { font-size: var(--fs-xl); line-height: var(--lh-tight); overflow-wrap: anywhere; }
+.p { margin-top: var(--sp-3); color: var(--c-text-muted); }
+.meta { margin: var(--sp-5) 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-4); }
+.meta dt { font-size: var(--fs-xs); color: var(--c-text-muted); }
+.meta dd { margin: 2px 0 0; font-weight: 600; overflow-wrap: anywhere; }
+@media (max-width: 480px) { .panel { padding: var(--sp-5) var(--sp-4); } }

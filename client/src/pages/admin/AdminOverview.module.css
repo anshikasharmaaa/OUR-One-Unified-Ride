@@ -1,0 +1,118 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 16px;
+  align-items: start;
+}
+.main,
+.aside {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: #6b7699;
+}
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  padding: 26px 28px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow:
+    0 1px 2px rgba(31, 41, 90, 0.04),
+    0 14px 34px -26px rgba(31, 41, 90, 0.35);
+  overflow: hidden;
+}
+.hero h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f1b3d;
+}
+.hero p {
+  margin: 8px 0 12px;
+  max-width: 46ch;
+  color: #6b7699;
+}
+.hero a {
+  font-weight: 700;
+  color: #3b5bdb;
+}
+.art {
+  width: 210px;
+  max-width: 100%;
+  height: auto;
+}
+.charts {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.timeline li {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  padding: 8px 0 8px 26px;
+  font-size: 0.875rem;
+  color: #0f1b3d;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 14px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 0 4px #f1f3fd;
+}
+.timeline li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 28px;
+  bottom: -8px;
+  width: 2px;
+  background: #edf0fa;
+}
+.timeline time {
+  font-size: 0.75rem;
+  color: #6b7699;
+}
+.skelBlock {
+  height: 220px;
+  border-radius: 14px;
+}
+@media (max-width: 1279px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px;
+  }
+  .art {
+    display: none;
+  }
+}

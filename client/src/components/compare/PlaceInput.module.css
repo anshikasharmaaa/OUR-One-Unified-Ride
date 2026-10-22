@@ -1,0 +1,213 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+/* The pill: the ONLY thing that shows focus */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 var(--sp-3) 0 var(--sp-4);
+  border-radius: 999px;
+  cursor: text;
+  color: var(--c-brand-700);
+  border: 1px solid var(--c-border-strong);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85),
+    rgba(207, 224, 255, 0.45)
+  );
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.field:focus-within {
+  border-color: var(--c-brand-500);
+  box-shadow: 0 0 0 3px rgba(47, 123, 255, 0.22);
+}
+.invalid .field {
+  border-color: var(--c-error);
+}
+
+.lead {
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+/* Kills the global input focus box (outline / box-shadow / radius) that caused the double box */
+.input,
+.input:focus,
+.input:focus-visible {
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--c-navy-900);
+  text-overflow: ellipsis;
+}
+.input::placeholder {
+  color: var(--c-text-muted);
+  opacity: 0.85;
+}
+
+.spinner {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+.ok {
+  flex: none;
+  color: #16a34a;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+
+.locate {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.locate:hover {
+  background: var(--c-brand-50);
+}
+.locate:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 1px;
+}
+
+/* Suggestions dropdown */
+.list {
+  position: absolute;
+  z-index: 50;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  max-height: min(320px, 50dvh);
+  overflow-y: auto;
+  background: #fff;
+  color: var(--c-navy-900);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+}
+.opt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.opt.active {
+  background: var(--c-brand-50);
+}
+.main {
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+.sub {
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+.note {
+  padding: 10px 12px;
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+.bad {
+  color: var(--c-error);
+}
+.err {
+  margin: 4px 0 0 var(--sp-4);
+  font-size: var(--fs-xs);
+  color: var(--c-error);
+}
+
+/* Dark / glass tone (hero) */
+.dark .field {
+  color: var(--c-cyan);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14),
+    rgba(95, 214, 222, 0.07)
+  );
+  backdrop-filter: blur(8px);
+}
+.dark .field:focus-within {
+  border-color: var(--c-cyan);
+  box-shadow: 0 0 0 3px rgba(95, 214, 222, 0.22);
+}
+.dark .invalid .field,
+.dark.invalid .field {
+  border-color: var(--c-error);
+}
+.dark .input {
+  color: #fff;
+}
+.dark .input::placeholder {
+  color: rgba(255, 255, 255, 0.62);
+}
+.dark .locate:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.dark .err {
+  color: #ffb4bd;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2s;
+  }
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.kind {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: var(--c-brand-50);
+  color: var(--c-brand-700);
+}
+.approx {
+  background: #fef3c7;
+  color: #92400e;
+}

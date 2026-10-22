@@ -1,0 +1,11 @@
+.email {
+  overflow-wrap: anywhere;
+  color: var(--c-navy-900);
+}
+.resend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}

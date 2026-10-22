@@ -1,0 +1,17 @@
+.host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  overflow: hidden;
+}
+.unavailable {
+  margin: 0;
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px dashed var(--c-border-strong);
+  border-radius: 12px;
+  color: var(--c-text-muted);
+  font-size: var(--fs-xs);
+  text-align: center;
+  background: #f7f9ff;
+}

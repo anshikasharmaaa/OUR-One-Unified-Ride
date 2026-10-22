@@ -1,0 +1,23 @@
+.fig {
+  margin: 0;
+}
+.fig svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.axis {
+  font-size: 11px;
+  fill: var(--c-text-muted);
+}
+.bar {
+  fill: var(--c-brand-600);
+}
+.bar:hover {
+  fill: var(--c-brand-700);
+}
+.cap {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}

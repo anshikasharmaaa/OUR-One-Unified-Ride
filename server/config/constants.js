@@ -1,0 +1,53 @@
+"use strict";
+module.exports = Object.freeze({
+  ROLES: { USER: "USER", ADMIN: "ADMIN" },
+  USER_STATUS: { ACTIVE: "ACTIVE", SUSPENDED: "SUSPENDED" },
+  APPROVAL: {
+    PENDING: "PENDING",
+    APPROVED: "APPROVED",
+    REJECTED: "REJECTED",
+    SUSPENDED: "SUSPENDED",
+  },
+  OTP_PURPOSE: {
+    USER_VERIFY: "USER_VERIFY",
+    PASSWORD_RESET: "PASSWORD_RESET",
+  },
+  OTP_TTL_SECONDS: 10 * 60,
+  OTP_MAX_ATTEMPTS: 5,
+  OTP_RESEND_COOLDOWN_SECONDS: 60,
+  RESET_TOKEN_TTL_SECONDS: 10 * 60,
+  REFRESH_COOKIE: "our_rt",
+  // Server-side refresh-session lifetimes. Admin sessions are deliberately short.
+  SESSION_TTL_SECONDS: {
+    USER: { remember: 30 * 86400, short: 1 * 86400 },
+    ADMIN: { remember: 8 * 3600, short: 8 * 3600 },
+  },
+  REFRESH_RACE_GRACE_SECONDS: 10,
+  VEHICLE_TYPES: ["CAB", "AUTO", "BIKE_TAXI"],
+  SEARCH_VEHICLES: ["ANY", "BIKE", "AUTO", "ECONOMY_CAB", "PREMIUM_CAB"],
+  PROVIDER_IDS: ["ola", "uber", "rapido"],
+  RIDE_VEHICLES: ["bike", "auto", "economy_cab", "premium_cab"],
+
+  // ---- Profile / account ----
+  GENDERS: ["MALE", "FEMALE", "OTHER", "PREFER_NOT_TO_SAY"],
+  AVATAR_COLORS: ["blue", "navy", "cyan", "indigo", "teal", "violet"],
+  FAVORITE_LABELS: ["HOME", "WORK", "FAMILY", "OTHER"],
+  MAX_FAVORITES: 20,
+  // Events OUR can actually verify. A provider redirect is NOT a confirmed booking, and no "completed" state exists.
+  RIDE_EVENT: {
+    COMPARISON_CREATED: "COMPARISON_CREATED",
+    DEMO_BOOKING_CREATED: "DEMO_BOOKING_CREATED",
+    DEMO_BOOKING_CANCELLED: "DEMO_BOOKING_CANCELLED",
+    PROVIDER_OPENED: "PROVIDER_OPENED",
+  },
+  NOTIFICATION: {
+    PROFILE_UPDATED: "PROFILE_UPDATED",
+    PASSWORD_CHANGED: "PASSWORD_CHANGED",
+    DEMO_BOOKING_CANCELLED: "DEMO_BOOKING_CANCELLED",
+    REFERRAL_APPLIED: "REFERRAL_APPLIED",
+    REFERRAL_JOINED: "REFERRAL_JOINED",
+    REFERRAL_QUALIFIED: "REFERRAL_QUALIFIED",
+  },
+  REFERRAL_STATUS: { PENDING: "PENDING", QUALIFIED: "QUALIFIED" },
+  REFERRAL_APPLY_WINDOW_DAYS: 14,
+});

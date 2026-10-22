@@ -1,0 +1,156 @@
+.card {
+  --fg: var(--c-navy-900, #0b1b46);
+  --muted: var(--c-text-muted, #5b6785);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  min-height: 210px;
+  padding: 16px;
+  border-radius: 18px;
+  color: var(--fg);
+  background: #fff;
+  border: 1px solid var(--c-border, #e3e8f4);
+  box-shadow: 0 10px 22px -18px rgba(13, 28, 70, 0.4);
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s,
+    border-color 0.2s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px -18px rgba(13, 28, 70, 0.45);
+}
+.best {
+  border-color: var(--c-brand-500, #2f7bff);
+}
+.selected {
+  outline: 2px solid var(--c-brand-500, #2f7bff);
+  outline-offset: 2px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 32px;
+}
+.cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-sm, 0.95rem);
+  font-weight: 700;
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  color: var(--c-brand-700, #1d4ed8);
+  background: #eef3ff;
+}
+.tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--c-brand-700, #1d4ed8);
+  background: #e8f0ff;
+}
+
+.priceBlock {
+  margin-top: auto;
+  display: grid;
+  gap: 4px;
+}
+.priceLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.price {
+  margin: 0;
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.meta {
+  margin: 0;
+  font-size: var(--fs-xs, 0.8rem);
+  color: var(--muted);
+}
+.expired {
+  margin: 4px 0 0;
+  font-size: var(--fs-xs, 0.8rem);
+  font-weight: 600;
+  color: #b45309;
+}
+
+.book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-size: var(--fs-sm, 0.95rem);
+  font-weight: 700;
+  color: #fff;
+  background: #1d4ed8;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s,
+    opacity 0.2s;
+}
+.book:hover:not(:disabled) {
+  background: #1e40af;
+}
+.book:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.book:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.book:focus-visible {
+  outline: 3px solid var(--c-focus, #93c5fd);
+  outline-offset: 2px;
+}
+.spin {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .book {
+    transition: none;
+  }
+  .card:hover {
+    transform: none;
+  }
+  .spin {
+    animation-duration: 2s;
+  }
+}

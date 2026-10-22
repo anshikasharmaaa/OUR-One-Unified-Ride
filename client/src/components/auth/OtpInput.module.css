@@ -1,0 +1,38 @@
+.group {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+.box {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 52px;
+  height: 50px;
+  padding: 0;
+  text-align: center;
+  font-size: 1.375rem;
+  font-weight: 700;
+  background: #f7f9ff;
+  color: var(--c-navy-900);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 12px;
+}
+.box:focus,
+.box:focus-visible {
+  outline: none;
+  background: #fff;
+  border-color: #2f7bff;
+  box-shadow: 0 0 0 3px rgba(47, 123, 255, 0.22);
+}
+.invalid {
+  border-color: var(--c-error);
+}
+@media (max-width: 380px) {
+  .group {
+    gap: 5px;
+  }
+  .box {
+    height: 44px;
+    font-size: 1.125rem;
+  }
+}

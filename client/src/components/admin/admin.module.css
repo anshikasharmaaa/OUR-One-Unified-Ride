@@ -1,0 +1,363 @@
+/* Shared admin design system: white radius-20 cards on a soft blue-grey canvas, royal-blue accent. */
+.panel {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow:
+    0 1px 2px rgba(31, 41, 90, 0.04),
+    0 14px 34px -26px rgba(31, 41, 90, 0.35);
+  min-width: 0;
+}
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 18px 22px 8px;
+}
+.panelHead h2 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #0f1b3d;
+}
+.panelHead a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3b5bdb;
+}
+.panelBody {
+  padding: 14px 22px 22px;
+}
+.flush {
+  padding: 8px 0 0;
+  overflow: hidden;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Stat cards */
+.stat {
+  display: grid;
+  gap: 8px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow:
+    0 1px 2px rgba(31, 41, 90, 0.04),
+    0 14px 34px -26px rgba(31, 41, 90, 0.35);
+  min-width: 0;
+}
+.statTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #6b7699;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.statIcon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #eef1ff;
+  color: #3b5bdb;
+}
+.statValue {
+  font-size: clamp(1.625rem, 3vw, 2.125rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #0f1b3d;
+}
+.statValueMuted {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #6b7699;
+}
+.statHint {
+  font-size: 0.8125rem;
+  color: #6b7699;
+}
+.delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.up {
+  color: #0c7a4d;
+}
+.down {
+  color: #b42318;
+}
+.skeleton {
+  display: block;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #eef2fb 25%, #e3e9f7 50%, #eef2fb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.good {
+  background: #dcf6e8;
+  color: #0c5333;
+}
+.warn {
+  background: #fff1cf;
+  color: #7a5300;
+}
+.bad {
+  background: #fde4e4;
+  color: #7d1521;
+}
+.neutral {
+  background: #e8edff;
+  color: #2f49b8;
+}
+
+/* States */
+.state {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 48px 20px;
+  text-align: center;
+  color: #6b7699;
+  font-size: 0.9rem;
+}
+.state strong {
+  color: #0f1b3d;
+  font-size: 1rem;
+}
+.stateError strong {
+  color: #b42318;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 22px;
+  border-top: 1px solid #edf0fa;
+  font-size: 0.875rem;
+  color: #6b7699;
+}
+.pagerBtns {
+  display: flex;
+  gap: 8px;
+}
+
+/* Grids */
+.grid4 {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid3 {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid2 {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 1100px) {
+  .grid4,
+  .grid3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .grid2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .grid4,
+  .grid3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .stat {
+    padding: 16px;
+  }
+  .panelHead,
+  .panelBody,
+  .pager {
+    padding-inline: 16px;
+  }
+}
+@media (max-width: 360px) {
+  .grid4,
+  .grid3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Form controls */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.input,
+.select,
+.textarea {
+  font: inherit;
+  font-size: 0.9rem;
+  color: #0f1b3d;
+  background: #f3f5fd;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 0 14px;
+  min-height: 42px;
+  min-width: 0;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    box-shadow 0.15s;
+}
+.textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 12px 14px;
+  resize: vertical;
+  line-height: 1.55;
+}
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  background: #fff;
+  border-color: #3b5bdb;
+  box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.18);
+}
+.input[aria-invalid="true"],
+.textarea[aria-invalid="true"] {
+  border-color: #d92d20;
+  background: #fff5f4;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid #e0e5f6;
+  background: #fff;
+  color: #0f1b3d;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.chip:hover {
+  background: #f3f5fd;
+}
+.chip:focus-visible {
+  outline: 3px solid rgba(59, 91, 219, 0.4);
+  outline-offset: 2px;
+}
+.chipOn,
+.chipOn:hover {
+  background: #3b5bdb;
+  border-color: #3b5bdb;
+  color: #fff;
+}
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.field label,
+.field legend {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0f1b3d;
+}
+.help {
+  font-size: 0.75rem;
+  color: #6b7699;
+}
+.fieldErr {
+  font-size: 0.75rem;
+  color: #b42318;
+}
+
+/* Dialog */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(15, 27, 61, 0.5);
+}
+.dialog {
+  width: 100%;
+  max-width: 540px;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  background: #fff;
+  color: #0f1b3d;
+  border-radius: 22px;
+  box-shadow: 0 30px 70px rgba(15, 27, 61, 0.35);
+}
+.dialogHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 24px 4px;
+}
+.dialogHead h2 {
+  font-size: 1.2rem;
+}
+.dialogBody {
+  padding: 12px 24px 24px;
+}
+.closeX {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 12px;
+  background: #f3f5fd;
+  color: #0f1b3d;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

@@ -1,0 +1,57 @@
+.row {
+  min-width: 0;
+  padding: 16px 16px 8px;
+  border-radius: 24px;
+  background: #f5f7fc;
+  border: 1px solid var(--c-border, #e3e8f4);
+}
+.who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.text {
+  min-width: 0;
+}
+.name {
+  margin: 0;
+  font-size: var(--fs-md, 1.1rem);
+  font-weight: 700;
+  color: var(--c-navy-900, #0b1b46);
+}
+.count {
+  margin: 2px 0 0;
+  font-size: var(--fs-xs, 0.8rem);
+  color: var(--c-text-muted, #5b6785);
+}
+.emptyHead {
+  margin-bottom: 12px;
+}
+.empty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 8px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px dashed var(--c-border-strong, #cfd8ec);
+  font-size: var(--fs-sm, 0.95rem);
+  color: var(--c-text-muted, #5b6785);
+}
+.retry {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: var(--c-brand-700, #1d4ed8);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.retry:focus-visible {
+  outline: 3px solid var(--c-focus, #93c5fd);
+  outline-offset: 2px;
+}

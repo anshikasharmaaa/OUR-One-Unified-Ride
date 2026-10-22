@@ -1,0 +1,8 @@
+.section { padding-block: clamp(56px, 8vw, 104px); scroll-margin-top: calc(var(--header-h) - 8px); }
+.plain { background: #fff; }
+.tint { background: #f4f7ff; }
+.head { max-width: 680px; margin: 0 auto clamp(32px, 5vw, 56px); text-align: center; }
+.left { margin-inline: 0; text-align: left; }
+.eyebrow { display: inline-block; margin-bottom: var(--sp-3); padding: 4px 12px; border-radius: 999px; background: var(--c-brand-50); color: var(--c-brand-700); font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.title { font-size: clamp(1.625rem, 3.6vw, 2.5rem); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; }
+.intro { margin-top: var(--sp-3); color: var(--c-text-muted); font-size: clamp(1rem, 1.6vw, 1.125rem); }

@@ -1,0 +1,48 @@
+/* Extra styles for the profile pages. Everything else lives in Profile.module.css. */
+.photoRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+.photoActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.photoCol {
+  display: grid;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.favBtns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+.chipWarn {
+  background: #fff4d6;
+  color: #7a5300;
+}
+.confirm {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-navy-900);
+}
+.placeField {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.placeLabel {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--c-navy-900);
+}

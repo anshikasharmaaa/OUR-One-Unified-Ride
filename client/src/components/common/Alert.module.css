@@ -1,0 +1,22 @@
+.alert {
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  border: 1px solid transparent;
+  overflow-wrap: anywhere;
+}
+.error {
+  background: var(--c-error-bg);
+  color: #7d1521;
+  border-color: #f4c3c9;
+}
+.success {
+  background: var(--c-success-bg);
+  color: #0c5333;
+  border-color: #bfe7d2;
+}
+.info {
+  background: var(--c-info-bg);
+  color: #1f3a8a;
+  border-color: #cddcff;
+}

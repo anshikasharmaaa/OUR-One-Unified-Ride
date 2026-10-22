@@ -1,0 +1,126 @@
+.grid {
+  display: grid;
+  gap: var(--sp-4);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 1040px;
+  margin-inline: auto;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: 26px;
+  background: linear-gradient(180deg, #fff 0%, #eef3ff 100%);
+  border: 1px solid var(--c-border);
+  scroll-margin-top: calc(var(--header-h, 56px) + 8px);
+}
+.dark {
+  background:
+    radial-gradient(
+      380px 240px at 100% 0%,
+      rgba(95, 214, 222, 0.25),
+      transparent 65%
+    ),
+    linear-gradient(150deg, #12275f 0%, #0a1330 100%);
+  color: #fff;
+  border-color: transparent;
+}
+.tag {
+  margin-bottom: var(--sp-2);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-brand-600);
+}
+.dark .tag {
+  color: var(--c-cyan);
+}
+.card h3 {
+  font-family: var(--font-display, var(--font-sans));
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+}
+.card ul {
+  list-style: none;
+  margin: var(--sp-3) 0 var(--sp-4);
+  padding: 0;
+  display: grid;
+  gap: var(--sp-2);
+  flex: 1;
+}
+.card li {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: flex-start;
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+}
+.dark li {
+  color: #c6d2f2;
+}
+.card li svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--c-brand-600);
+}
+.dark li svg {
+  color: var(--c-cyan);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 var(--sp-5);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  text-align: center;
+}
+.primary {
+  background: linear-gradient(135deg, #1d4ed8, #2f7bff);
+  color: #fff;
+}
+.primary:hover {
+  color: #fff;
+  filter: brightness(1.08);
+}
+.secondary {
+  border: 1px solid var(--c-border-strong);
+  color: var(--c-navy-900);
+  background: #fff;
+}
+.secondary:hover {
+  background: var(--c-brand-50);
+  color: var(--c-navy-900);
+}
+.primaryLight {
+  background: #fff;
+  color: var(--c-navy-900);
+}
+.primaryLight:hover {
+  background: var(--c-sky);
+  color: var(--c-navy-900);
+}
+.secondaryDark {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+.secondaryDark:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.dark :focus-visible {
+  outline-color: var(--c-cyan);
+}
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

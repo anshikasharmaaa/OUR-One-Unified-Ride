@@ -1,0 +1,31 @@
+.logo {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.sm {
+  height: 40px;
+}
+.md {
+  height: 52px;
+}
+.lg {
+  height: 96px;
+}
+.fallback {
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--c-brand-700);
+  line-height: 1;
+}
+.fallback.sm {
+  font-size: 1.5rem;
+}
+.fallback.md {
+  font-size: 2rem;
+}
+.fallback.lg {
+  font-size: 3rem;
+}

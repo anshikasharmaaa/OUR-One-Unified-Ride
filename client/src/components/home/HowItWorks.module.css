@@ -1,0 +1,108 @@
+.map {
+  position: relative;
+  max-width: 1000px;
+  margin-inline: auto;
+  aspect-ratio: 1000 / 420;
+}
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.step {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+}
+.node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%);
+  background: linear-gradient(135deg, #2f7bff, #38c9e0);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.125rem;
+  filter: drop-shadow(0 6px 10px rgba(37, 99, 235, 0.45));
+}
+.label {
+  position: absolute;
+  width: 236px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--c-border);
+  box-shadow: 0 14px 30px -20px rgba(15, 27, 61, 0.5);
+}
+.label h3 {
+  font-size: var(--fs-sm);
+  line-height: 1.25;
+  color: var(--c-navy-900);
+}
+.label p {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+}
+.above {
+  transform: translate(-22%, calc(-100% - 38px));
+}
+.below {
+  transform: translate(-50%, 38px);
+}
+.belowLeft {
+  transform: translate(-96%, 38px);
+}
+
+@media (max-width: 899px) {
+  .map {
+    aspect-ratio: auto;
+    max-width: 520px;
+  }
+  .svg {
+    display: none;
+  }
+  .steps {
+    position: relative;
+    display: grid;
+    gap: var(--sp-5);
+    padding-left: 4px;
+  }
+  .steps::before {
+    content: "";
+    position: absolute;
+    left: 31px;
+    top: 24px;
+    bottom: 24px;
+    border-left: 3px dashed #2f7bff;
+    opacity: 0.5;
+  }
+  .step {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-4);
+  }
+  .node {
+    position: relative;
+    transform: none;
+    flex: none;
+  }
+  .label {
+    position: static;
+    transform: none;
+    width: auto;
+    flex: 1;
+  }
+}

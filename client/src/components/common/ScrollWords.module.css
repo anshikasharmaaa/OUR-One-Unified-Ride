@@ -1,0 +1,22 @@
+.root {
+  color: var(--c-navy-900);
+}
+.off,
+.on {
+  transition: opacity 0.35s ease;
+}
+.off {
+  opacity: 0.2;
+}
+.on {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .off,
+  .on {
+    transition: none;
+  }
+  .off {
+    opacity: 1;
+  }
+}
