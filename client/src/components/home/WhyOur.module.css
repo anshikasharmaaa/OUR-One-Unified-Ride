@@ -30,6 +30,7 @@
   cursor: pointer;
   font: inherit;
   color: var(--c-navy-900);
+  -webkit-tap-highlight-color: transparent;
   transition:
     background 0.3s,
     color 0.3s,
@@ -39,12 +40,16 @@
 .row:hover {
   transform: translateX(3px);
 }
+.row:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+}
 .no {
   flex: none;
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 10px;
   background: var(--c-brand-50);
   color: var(--c-brand-700);
@@ -64,8 +69,8 @@
 }
 .txt small {
   color: var(--c-text-muted);
-  font-size: 0.75rem;
-  line-height: 1.4;
+  font-size: 0.8125rem;
+  line-height: 1.45;
   transition: color 0.3s;
 }
 .on {
@@ -132,11 +137,13 @@
   bottom: 18px;
   display: flex;
   align-items: baseline;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 4px 12px;
   padding: 14px 18px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.16);
   border: 1px solid rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: #fff;
   animation: pop 0.5s var(--ease);
@@ -167,7 +174,39 @@
     grid-template-columns: minmax(0, 1fr);
   }
   .panel {
-    min-height: 280px;
+    min-height: 300px;
+  }
+}
+@media (max-width: 520px) {
+  .list {
+    padding: 10px;
+    gap: 8px;
+    border-radius: 22px;
+  }
+  .row {
+    padding: 12px;
+    gap: 12px;
+    border-radius: 14px;
+  }
+  .txt small {
+    font-size: 0.875rem;
+  }
+  .panel {
+    min-height: 260px;
+    border-radius: 22px;
+  }
+  .car {
+    width: min(58%, 220px);
+    margin-top: -36px;
+  }
+  .road {
+    bottom: 86px;
+  }
+  .stat {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 12px 14px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

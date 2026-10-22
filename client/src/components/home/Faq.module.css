@@ -12,7 +12,7 @@
 }
 .title {
   font-family: var(--font-display, var(--font-sans));
-  font-size: clamp(1.75rem, 4.2vw, 2.75rem);
+  font-size: clamp(1.625rem, 1.1rem + 2.4vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--c-navy-900);
@@ -51,7 +51,7 @@
   align-items: center;
   gap: var(--sp-4);
   width: 100%;
-  min-height: 56px;
+  min-height: 60px;
   padding: 10px 14px 10px 18px;
   background: none;
   border: 0;
@@ -59,6 +59,13 @@
   text-align: left;
   cursor: pointer;
   color: var(--c-navy-900);
+  font: inherit;
+  font-weight: 600;
+  -webkit-tap-highlight-color: transparent;
+}
+.item button:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: -3px;
 }
 .no {
   flex: none;
@@ -68,13 +75,16 @@
 }
 .q {
   flex: 1;
+  min-width: 0;
   font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 .btn {
   position: relative;
   flex: none;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: linear-gradient(135deg, #12275f, #0a1330);
   transition: background 0.25s;
@@ -109,13 +119,24 @@
 }
 .panel p {
   color: var(--c-text-muted);
-  font-size: var(--fs-xs);
-  line-height: 1.6;
+  font-size: 0.875rem;
+  line-height: 1.65;
   max-width: 62ch;
 }
 @media (max-width: 520px) {
+  .item {
+    border-radius: 16px;
+  }
+  .item button {
+    gap: var(--sp-3);
+    padding: 10px 12px 10px 16px;
+    border-radius: 16px;
+  }
   .panel {
-    padding-left: 18px;
+    padding: 0 16px 16px;
+  }
+  .panel p {
+    font-size: 0.9375rem;
   }
   .no {
     display: none;

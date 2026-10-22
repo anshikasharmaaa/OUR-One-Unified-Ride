@@ -9,8 +9,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 46px;
-  padding: 0 var(--sp-3) 0 var(--sp-4);
+  height: 48px;
+  padding: 0 var(--sp-2) 0 var(--sp-4);
   border-radius: 999px;
   cursor: text;
   color: var(--c-brand-700);
@@ -54,7 +54,7 @@
   border: 0;
   background: transparent;
   font: inherit;
-  font-size: var(--fs-sm);
+  font-size: 1rem; /* 16px: iOS Safari zooms the page on focus for anything smaller */
   color: var(--c-navy-900);
   text-overflow: ellipsis;
 }
@@ -83,13 +83,14 @@
   flex: none;
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 0;
   background: transparent;
   color: inherit;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 .locate:hover {
   background: var(--c-brand-50);
@@ -109,8 +110,11 @@
   margin: 0;
   padding: 6px;
   list-style: none;
+  max-height: min(320px, 50vh);
   max-height: min(320px, 50dvh);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   background: #fff;
   color: var(--c-navy-900);
   border: 1px solid var(--c-border-strong);
@@ -121,6 +125,8 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-height: 48px;
+  justify-content: center;
   padding: 10px 12px;
   border-radius: 12px;
   cursor: pointer;
@@ -131,13 +137,15 @@
 .main {
   font-weight: 600;
   font-size: var(--fs-sm);
+  overflow-wrap: anywhere;
 }
 .sub {
   font-size: var(--fs-xs);
   color: var(--c-text-muted);
+  overflow-wrap: anywhere;
 }
 .note {
-  padding: 10px 12px;
+  padding: 12px;
   font-size: var(--fs-xs);
   color: var(--c-text-muted);
 }
@@ -159,6 +167,7 @@
     rgba(255, 255, 255, 0.14),
     rgba(95, 214, 222, 0.07)
   );
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 .dark .field:focus-within {

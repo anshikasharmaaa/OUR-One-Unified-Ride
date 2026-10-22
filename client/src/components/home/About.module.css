@@ -34,8 +34,8 @@
   flex: none;
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
   background: linear-gradient(135deg, #1d4ed8, #2f7bff);
   color: #fff;
@@ -47,14 +47,15 @@
 .pillars p {
   margin-top: 3px;
   color: var(--c-text-muted);
-  font-size: var(--fs-xs);
+  font-size: 0.8125rem;
+  line-height: 1.5;
 }
 .panel {
   display: grid;
   align-content: center;
   justify-items: center;
   gap: var(--sp-3);
-  padding: clamp(20px, 3vw, 32px);
+  padding: clamp(18px, 3vw, 32px);
   border-radius: 28px;
   text-align: center;
   color: #fff;
@@ -90,6 +91,7 @@
 .facts li {
   display: grid;
   gap: 1px;
+  min-width: 0;
   padding: 12px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.08);
@@ -130,6 +132,26 @@
 @media (max-width: 860px) {
   .grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .pillars li {
+    gap: var(--sp-3);
+    padding: 16px;
+    border-radius: 18px;
+  }
+  .pillars p {
+    font-size: 0.875rem;
+  }
+  .panel {
+    border-radius: 22px;
+    padding: 18px 16px;
+  }
+  .facts li {
+    padding: 10px;
+  }
+  .facts strong {
+    font-size: 1.375rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

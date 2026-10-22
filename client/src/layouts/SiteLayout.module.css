@@ -1,2 +1,16 @@
-.site { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; background: #fff; overflow-x: clip; }
-.main { flex: 1; margin-top: calc(var(--header-h) * -1); /* hero tucks under the transparent header */ outline: none; }
+.site {
+  /* Real navbar height (56px bar + 1px border + notch inset), so hero padding and anchor offsets are exact */
+  --header-h: calc(57px + env(safe-area-inset-top, 0px));
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow-x: clip;
+}
+.main {
+  flex: 1;
+  min-width: 0;
+  margin-top: calc(var(--header-h) * -1); /* hero tucks under the header */
+  outline: none;
+}

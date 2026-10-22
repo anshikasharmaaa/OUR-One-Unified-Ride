@@ -28,10 +28,11 @@ export default function SiteNavbar() {
   const { status, user, signOut } = useAuth();
   const toast = useToast();
   const [busy, setBusy] = useState(false);
-  const [open, setOpen] = useState(false); // mobile menu
+  const [open, setOpen] = useState(false); // mobile drawer
   const [menu, setMenu] = useState(false); // account dropdown
   const [scrolled, setScrolled] = useState(false);
   const toggleRef = useRef(null);
+  const closeRef = useRef(null);
   const menuRef = useRef(null);
 
   const authed = status === 'authenticated';
@@ -45,14 +46,26 @@ export default function SiteNavbar() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Drawer: lock page scroll, Escape closes, focus moves into the drawer.
   useEffect(() => {
     if (!open) return undefined;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    closeRef.current?.focus();
     const onKey = (e) => { if (e.key === 'Escape') { setOpen(false); toggleRef.current?.focus(); } };
     document.addEventListener('keydown', onKey);
     return () => { document.body.style.overflow = prev; document.removeEventListener('keydown', onKey); };
   }, [open]);
+
+  // Rotating to a wide screen must never leave the page scroll-locked behind a hidden drawer.
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 900px)');
+    const onChange = (e) => { if (e.matches) setOpen(false); };
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
   useEffect(() => {
     if (!menu) return undefined;
     const onDown = (e) => { if (menuRef.current && !menuRef.current.contains(e.target)) setMenu(false); };
@@ -85,6 +98,17 @@ export default function SiteNavbar() {
   const accountLabel = authed ? ACCOUNT_LABEL[user.role] || 'My account' : 'Log in';
   const first = authed ? user.name?.trim().split(/\s+/)[0] || 'Account' : '';
 
+  const avatar = authed && (
+    <span
+      className={styles.avatar} aria-hidden="true"
+      style={photo ? { overflow: 'hidden' } : { background: AVATAR_GRADIENT[user.avatarColor] || AVATAR_GRADIENT.blue }}
+    >
+      {photo
+        ? <img src={photo} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        : first.charAt(0).toUpperCase()}
+    </span>
+  );
+
   const links = (mobile) => NAV.map((item) => (
     <li key={item.label}>
       <Link
@@ -102,49 +126,59 @@ export default function SiteNavbar() {
   ));
 
   return (
-    <header className={`${styles.header} ${scrolled || open ? styles.solid : ''}`}>
-      <div className={`container ${styles.bar}`}>
-        <Link to="/" className={styles.brand} aria-label="OUR — One Unified Ride, home"><Logo size="sm" className={styles.logo} /></Link>
+    <>
+      <header className={`${styles.header} ${scrolled || open ? styles.solid : ''}`}>
+        <div className={`container ${styles.bar}`}>
+          <Link to="/" className={styles.brand} aria-label="OUR — One Unified Ride, home"><Logo size="sm" className={styles.logo} /></Link>
 
-        <nav className={styles.desktop} aria-label="Primary"><ul>{links(false)}</ul></nav>
+          <nav className={styles.desktop} aria-label="Primary"><ul>{links(false)}</ul></nav>
 
-        <div className={styles.actions}>
-          <span className={styles.accountSlot}>
-            {authed ? (
-              <div className={styles.account} ref={menuRef}>
-                <button type="button" className={styles.user} aria-haspopup="menu" aria-expanded={menu} onClick={() => setMenu((m) => !m)}>
-                  <span
-                    className={styles.avatar} aria-hidden="true"
-                    style={photo ? { overflow: 'hidden' } : { background: AVATAR_GRADIENT[user.avatarColor] || AVATAR_GRADIENT.blue }}
-                  >
-                    {photo
-                      ? <img src={photo} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      : first.charAt(0).toUpperCase()}
-                  </span>
-                  <span className={styles.userName}>{first}</span>
-                  <Icon name="chevronDown" size={16} />
-                </button>
-                {menu && (
-                  <div className={styles.dropdown} role="menu">
-                    <p className={styles.who}><strong>{user.name}</strong><span>{user.email}</span></p>
-                    <Link to={accountPath} role="menuitem" className={styles.item}><Icon name="user" size={16} />{accountLabel}</Link>
-                    <button type="button" role="menuitem" className={styles.item} onClick={logout} disabled={busy}><Icon name="logout" size={16} />Log out</button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link to="/login" className={styles.login}>Log in</Link>
-            )}
-          </span>
-          <button ref={toggleRef} type="button" className={styles.burger} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen((o) => !o)}>
-            <Icon name={open ? 'close' : 'menu'} size={22} />
-          </button>
+          <div className={styles.actions}>
+            <span className={styles.accountSlot}>
+              {authed ? (
+                <div className={styles.account} ref={menuRef}>
+                  <button type="button" className={styles.user} aria-haspopup="menu" aria-expanded={menu} onClick={() => setMenu((m) => !m)}>
+                    {avatar}
+                    <span className={styles.userName}>{first}</span>
+                    <Icon name="chevronDown" size={16} />
+                  </button>
+                  {menu && (
+                    <div className={styles.dropdown} role="menu">
+                      <p className={styles.who}><strong>{user.name}</strong><span>{user.email}</span></p>
+                      <Link to={accountPath} role="menuitem" className={styles.item}><Icon name="user" size={16} />{accountLabel}</Link>
+                      <button type="button" role="menuitem" className={styles.item} onClick={logout} disabled={busy}><Icon name="logout" size={16} />Log out</button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link to="/login" className={styles.login}>Log in</Link>
+              )}
+            </span>
+            <button ref={toggleRef} type="button" className={styles.burger} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen((o) => !o)}>
+              <Icon name={open ? 'close' : 'menu'} size={22} />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
+      {/* Outside <header>: the header's blur would otherwise trap these inside its own box. */}
+      {open && <button type="button" className={styles.scrim} aria-label="Close menu" tabIndex={-1} onClick={() => setOpen(false)} />}
       {open && (
         <nav id="mobile-menu" className={styles.mobile} aria-label="Mobile">
+          <div className={styles.mobileTop}>
+            <Link to="/" className={styles.mobileBrand} aria-label="OUR — One Unified Ride, home"><Logo size="sm" className={styles.logo} /></Link>
+            <button ref={closeRef} type="button" className={styles.closeBtn} aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" size={22} /></button>
+          </div>
+
+          {authed && (
+            <div className={styles.mobileUser}>
+              {avatar}
+              <div><strong className={styles.mobileName}>{user.name}</strong><span className={styles.mobileMail}>{user.email}</span></div>
+            </div>
+          )}
+
           <ul>{links(true)}</ul>
+
           <div className={styles.mobileActions}>
             {authed ? (
               <>
@@ -154,12 +188,12 @@ export default function SiteNavbar() {
             ) : (
               <>
                 <Link to="/login" className={styles.login}>Log in</Link>
-                <Link to="/signup" className={styles.login}>Sign up</Link>
+                <Link to="/signup" className={styles.cta}>Sign up</Link>
               </>
             )}
           </div>
         </nav>
       )}
-    </header>
+    </>
   );
 }

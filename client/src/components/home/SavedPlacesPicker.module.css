@@ -1,6 +1,6 @@
 .wrap {
   display: grid;
-  gap: 6px;
+  gap: 8px;
   margin-top: var(--sp-3);
   min-width: 0;
 }
@@ -22,6 +22,7 @@
   align-items: center;
   gap: 6px;
   max-width: 100%;
+  min-width: 0;
   padding: 4px 4px 4px 12px;
   border: 1px solid var(--c-border-strong);
   border-radius: 999px;
@@ -37,7 +38,7 @@
   color: var(--c-navy-900);
 }
 .btn {
-  min-height: 36px;
+  min-height: 40px;
   padding: 0 14px;
   border: 0;
   border-radius: 999px;
@@ -46,10 +47,15 @@
   font-size: var(--fs-xs);
   font-weight: 700;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn:hover {
   background: var(--c-brand-600);
   color: #fff;
+}
+.btn:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
 }
 
 .dark .title {
@@ -69,4 +75,13 @@
 .dark .btn:hover {
   background: #fff;
   color: var(--c-brand-700);
+}
+
+@media (max-width: 480px) {
+  .list {
+    gap: 6px;
+  }
+  .name {
+    max-width: 11ch;
+  }
 }

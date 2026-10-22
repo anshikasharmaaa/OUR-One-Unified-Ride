@@ -1,5 +1,6 @@
 .footer {
   padding-top: clamp(32px, 5vw, 52px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   color: #b9c8ee;
   background:
     radial-gradient(
@@ -22,8 +23,8 @@
 }
 .about p {
   margin-top: var(--sp-3);
-  max-width: 34ch;
-  font-size: var(--fs-xs);
+  max-width: 36ch;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 .footer h2 {
@@ -43,15 +44,20 @@
 }
 .footer li a {
   display: inline-block;
-  padding: 5px 0;
+  padding: 6px 0;
   color: #b9c8ee;
-  font-size: var(--fs-xs);
+  font-size: 0.875rem;
   text-decoration: none;
   overflow-wrap: anywhere;
 }
 .footer li a:hover {
   color: #fff;
   text-decoration: underline;
+}
+.footer li a:focus-visible {
+  outline: 3px solid var(--c-cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 .base {
   display: flex;
@@ -63,6 +69,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   color: #8da2d6;
   font-size: 0.75rem;
+  line-height: 1.5;
 }
 @media (max-width: 860px) {
   .grid {
@@ -75,5 +82,18 @@
 @media (max-width: 560px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-4) var(--sp-4);
+  }
+  .grid > nav:nth-of-type(3) {
+    grid-column: 1 / -1; /* Contact gets the full width so the email never squeezes */
+  }
+  .footer li a {
+    padding: 9px 0; /* comfortable touch targets */
+  }
+  .base {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    margin-top: var(--sp-4);
   }
 }

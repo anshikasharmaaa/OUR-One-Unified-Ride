@@ -10,6 +10,7 @@
   display: grid;
   gap: var(--sp-3);
   justify-items: start;
+  min-width: 0;
 }
 .soon {
   padding: 5px 14px;
@@ -23,11 +24,12 @@
 }
 .copy h2 {
   font-family: var(--font-display, var(--font-sans));
-  font-size: clamp(1.625rem, 3.6vw, 2.5rem);
+  font-size: clamp(1.625rem, 1.1rem + 2.4vw, 2.5rem);
   line-height: 1.12;
   letter-spacing: -0.025em;
   font-weight: 800;
   color: var(--c-navy-900);
+  text-wrap: balance;
 }
 .hl {
   background: linear-gradient(
@@ -39,13 +41,15 @@
 }
 .lede {
   color: var(--c-text-muted);
-  font-size: var(--fs-sm);
+  font-size: 0.9375rem;
+  line-height: 1.6;
   max-width: 46ch;
 }
 .stores {
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-2);
+  padding-top: 4px;
 }
 .store {
   position: relative;
@@ -85,6 +89,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  min-height: 44px;
   font-size: var(--fs-sm);
   font-weight: 700;
   color: var(--c-brand-700);
@@ -93,12 +98,17 @@
 .cta:hover {
   text-decoration: underline;
 }
+.cta:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+}
 
 .stage {
   position: relative;
   display: grid;
   place-items: center;
   min-height: 380px;
+  min-width: 0;
 }
 .disc {
   position: absolute;
@@ -242,8 +252,41 @@
     justify-items: center;
     text-align: center;
   }
+  .stores {
+    justify-content: center;
+  }
   .stage {
     min-height: 340px;
+  }
+}
+@media (max-width: 520px) {
+  .stage {
+    min-height: 320px;
+  }
+  .phone {
+    width: min(184px, 52vw);
+    border-radius: 30px;
+  }
+  .screen {
+    border-radius: 22px;
+  }
+  .float {
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+  }
+  .fa {
+    left: 0;
+  }
+  .fc {
+    left: 3%;
+  }
+}
+@media (max-width: 360px) {
+  .store {
+    flex: 1 1 130px;
+    min-width: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
