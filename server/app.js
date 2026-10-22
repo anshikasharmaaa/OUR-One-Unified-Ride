@@ -22,11 +22,17 @@ if (!env.isTest)
     }),
   );
 app.use(helmet());
+const allowedOrigins = [
+  env.clientOrigin,
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+];
+
 app.use(
   cors({
-    origin: env.clientOrigin, // single trusted origin; never "*" with credentials
+    origin: allowedOrigins,
     credentials: true,
-    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"], // PATCH is used by the admin approve / suspend actions
+    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
     maxAge: 600,
   }),
